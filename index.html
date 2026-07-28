@@ -38,7 +38,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&family=Noto+Sans+JP:wght@400;700&family=Shippori+Mincho:wght@600&display=swap">
 
 <link rel="stylesheet" href="assets/css/style.css">
 
@@ -252,8 +252,8 @@ window.addEventListener('load', function () {
   <section class="l-section p-concept" id="concept" aria-labelledby="concept-h">
     <div class="l-narrow js-reveal">
       <span class="c-eyebrow">CONCEPT</span>
-      <h2 class="p-concept__statement" id="concept-h" data-i18n="concept.heading">
-        天満の<br>飲み歩きは、<br>まずここから。
+      <h2 class="c-heading" id="concept-h" data-i18n="concept.heading">
+        天満の飲み歩きは、<br>まずここから。
       </h2>
       <div class="p-concept__body" data-i18n="concept.body">
         <p>
@@ -286,17 +286,20 @@ window.addEventListener('load', function () {
 
       <!-- ---------- 特徴① BEER ---------- -->
       <article class="p-feature__item js-reveal">
-        <div class="p-feature__head">
-          <p class="p-feature__index">01</p>
-          <p class="p-feature__romaji">BEER</p>
-          <p class="p-feature__tags" data-i18n="feature.beer.tags">— 氷水 × 大瓶 × 320円 —</p>
-          <div class="p-feature__media">
-            <img src="assets/img/feature-beer-01.jpg" width="1440" height="1080"
-                 alt="氷水に沈められたキリンラガーの大瓶" loading="lazy" decoding="async">
+        <div class="p-feature__media">
+          <img src="assets/img/feature-beer-01.jpg" width="1440" height="1080"
+               alt="氷水に沈められたキリンラガーの大瓶" loading="lazy" decoding="async">
+          <div class="p-feature__sub">
+            <!-- 撮影地: KITTE店。天満本店の写真が用意でき次第、差し替えること -->
+            <img src="assets/img/feature-beer-02.jpg" width="1200" height="800"
+                 alt="氷水から大瓶ビールを引き上げるスタッフ" loading="lazy" decoding="async">
+            <img src="assets/img/feature-beer-03.jpg" width="1200" height="800"
+                 alt="氷にどっぷり浸かった大瓶ビール" loading="lazy" decoding="async">
           </div>
         </div>
 
         <div class="p-feature__text">
+          <p class="p-feature__num">01 / BEER</p>
           <h3 class="p-feature__title" data-i18n="feature.beer.title">氷水から、自分で引き上げる。</h3>
           <div class="p-feature__body" data-i18n="feature.beer.body">
             <p>
@@ -310,17 +313,6 @@ window.addEventListener('load', function () {
             </p>
             <p>この一杯を飲むために、天満まで来る人がいます。</p>
           </div>
-
-          <details class="p-more">
-            <summary data-i18n="more.photos">写真を見る</summary>
-            <div class="p-more__body p-feature__sub">
-              <!-- 撮影地: KITTE店。天満本店の写真が用意でき次第、差し替えること -->
-              <img src="assets/img/feature-beer-02.jpg" width="1200" height="800"
-                   alt="氷水から大瓶ビールを引き上げるスタッフ" loading="lazy" decoding="async">
-              <img src="assets/img/feature-beer-03.jpg" width="1200" height="800"
-                   alt="氷にどっぷり浸かった大瓶ビール" loading="lazy" decoding="async">
-            </div>
-          </details>
 
           <!-- ハッピーアワー価格320円はクライアント確定（2026-07-28）。
                TBD: 通常価格530円は未確認のまま。320円が確定した経緯から、530円も要再確認。
@@ -353,18 +345,20 @@ window.addEventListener('load', function () {
 
       <!-- ---------- 特徴② SAKANA ---------- -->
       <article class="p-feature__item js-reveal">
-        <div class="p-feature__head">
-          <p class="p-feature__index">02</p>
-          <p class="p-feature__romaji">SAKANA</p>
-          <p class="p-feature__tags" data-i18n="feature.sakana.tags">— 43品 × 手づくり × 190円 —</p>
-          <div class="p-feature__media">
-            <img src="assets/img/feature-sakana-01.jpg" width="1440" height="1080"
-                 alt="看板料理の肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
+        <div class="p-feature__media">
+          <img src="assets/img/feature-sakana-01.jpg" width="1440" height="1080"
+               alt="看板料理の肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
+          <div class="p-feature__sub">
+            <img src="assets/img/feature-sakana-02.jpg" width="1200" height="800"
+                 alt="鮮魚のお造り盛り合わせ" loading="lazy" decoding="async">
+            <img src="assets/img/feature-sakana-03.jpg" width="1200" height="800"
+                 alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
           </div>
         </div>
 
         <div class="p-feature__text">
-          <h3 class="p-feature__title" data-i18n="feature.sakana.title">190円から、ぜんぶ手づくり。</h3>
+          <p class="p-feature__num">02 / SAKANA</p>
+          <h3 class="p-feature__title" data-i18n="feature.sakana.title">190円から、<br>ぜんぶ手づくり。</h3>
           <div class="p-feature__body" data-i18n="feature.sakana.body">
             <p>43品。そのほとんどが190円から590円です。</p>
             <p>
@@ -383,35 +377,27 @@ window.addEventListener('load', function () {
               だいたい一度は驚かれます。
             </p>
           </div>
-
-          <details class="p-more">
-            <summary data-i18n="more.photos">写真を見る</summary>
-            <div class="p-more__body p-feature__sub">
-              <img src="assets/img/feature-sakana-02.jpg" width="1200" height="800"
-                   alt="鮮魚のお造り盛り合わせ" loading="lazy" decoding="async">
-              <img src="assets/img/feature-sakana-03.jpg" width="1200" height="800"
-                   alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
-            </div>
-          </details>
         </div>
       </article>
 
       <!-- ---------- 特徴③ BA ---------- -->
       <article class="p-feature__item js-reveal">
-        <div class="p-feature__head">
-          <p class="p-feature__index">03</p>
-          <p class="p-feature__romaji">BA</p>
-          <p class="p-feature__tags" data-i18n="feature.ba.tags">— 昭和 × 全50席 × 全席禁煙 —</p>
-          <div class="p-feature__media">
-            <!-- 撮影地: いずれもKITTE店。天満本店の店内・外観写真が用意でき次第、差し替えること
-                 （要件書1.3・6.1が指摘するとおり、LPと現地のギャップは口コミ低評価の主因になる） -->
-            <img src="assets/img/feature-ba-01.jpg" width="1440" height="1080"
-                 alt="カウンターと厨房が見えるにぎわう店内" loading="lazy" decoding="async">
+        <div class="p-feature__media">
+          <!-- 撮影地: いずれもKITTE店。天満本店の店内・外観写真が用意でき次第、差し替えること
+               （要件書1.3・6.1が指摘するとおり、LPと現地のギャップは口コミ低評価の主因になる） -->
+          <img src="assets/img/feature-ba-01.jpg" width="1440" height="1080"
+               alt="カウンターと厨房が見えるにぎわう店内" loading="lazy" decoding="async">
+          <div class="p-feature__sub">
+            <img src="assets/img/feature-ba-02.jpg" width="1200" height="800"
+                 alt="「大衆酒場 大旦那」の看板" loading="lazy" decoding="async">
+            <img src="assets/img/feature-ba-03.jpg" width="1200" height="800"
+                 alt="店頭に下がる大旦那の赤提灯" loading="lazy" decoding="async">
           </div>
         </div>
 
         <div class="p-feature__text">
-          <h3 class="p-feature__title" data-i18n="feature.ba.title">昭和のまま、そこにある。</h3>
+          <p class="p-feature__num">03 / BA</p>
+          <h3 class="p-feature__title" data-i18n="feature.ba.title">昭和のまま、<br>そこにある。</h3>
           <div class="p-feature__body" data-i18n="feature.ba.body">
             <p>
               カウンター20席、テーブル30席。全50席。<br>
@@ -431,16 +417,6 @@ window.addEventListener('load', function () {
               全席禁煙なので、煙は気になりません。
             </p>
           </div>
-
-          <details class="p-more">
-            <summary data-i18n="more.photos">写真を見る</summary>
-            <div class="p-more__body p-feature__sub">
-              <img src="assets/img/feature-ba-02.jpg" width="1200" height="800"
-                   alt="「大衆酒場 大旦那」の看板" loading="lazy" decoding="async">
-              <img src="assets/img/feature-ba-03.jpg" width="1200" height="800"
-                   alt="店頭に下がる大旦那の赤提灯" loading="lazy" decoding="async">
-            </div>
-          </details>
         </div>
       </article>
     </div>
@@ -524,91 +500,55 @@ window.addEventListener('load', function () {
       </p>
 
       <h3 class="p-menu__subhead" data-i18n="menu.pick.heading">まずはこの3品</h3>
-      <div class="p-menu__rows">
-        <article class="p-menu__row">
-          <div class="p-menu__head">
-            <h4 class="p-menu__name" data-i18n="menu.nikudofu.name">肉豆腐（黒ドーフ）</h4>
-            <span class="p-menu__price" data-i18n="menu.nikudofu.price">693円</span>
+      <div class="p-menu__cards">
+        <article class="p-menu__card">
+          <img src="assets/img/menu-01-nikudofu.jpg" width="800" height="800"
+               alt="肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
+          <div class="p-menu__card-body">
+            <h4 class="p-menu__card-name"><span data-i18n="menu.nikudofu.name">肉豆腐（黒ドーフ）</span><span class="p-menu__price" data-i18n="menu.nikudofu.price">693円</span></h4>
+            <p class="p-menu__card-desc" data-i18n="menu.nikudofu.desc">真っ黒になるまで煮含めた、看板料理。</p>
           </div>
-          <details class="p-more">
-            <summary data-i18n="more.detail">詳しく</summary>
-            <div class="p-more__body">
-              <img src="assets/img/menu-01-nikudofu.jpg" width="800" height="800"
-                   alt="肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
-              <p class="p-menu__desc" data-i18n="menu.nikudofu.desc">真っ黒になるまで煮含めた、看板料理。</p>
-            </div>
-          </details>
         </article>
 
-        <article class="p-menu__row">
-          <div class="p-menu__head">
-            <h4 class="p-menu__name" data-i18n="menu.hamukatsu.name">雲仙厚切りハムカツ</h4>
+        <article class="p-menu__card">
+          <img src="assets/img/menu-02-hamukatsu.jpg" width="800" height="800"
+               alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
+          <div class="p-menu__card-body">
             <!-- TBD: 雲仙厚切りハムカツの価格を要確認（現状は食べログ掲載値の推定） -->
-            <span class="p-menu__price" data-i18n="menu.hamukatsu.price">550円 【TBD】</span>
+            <h4 class="p-menu__card-name"><span data-i18n="menu.hamukatsu.name">雲仙厚切りハムカツ</span><span class="p-menu__price" data-i18n="menu.hamukatsu.price">550円 【TBD】</span></h4>
+            <p class="p-menu__card-desc" data-i18n="menu.hamukatsu.desc">厚みで殴ってくるタイプのハムカツ。</p>
           </div>
-          <details class="p-more">
-            <summary data-i18n="more.detail">詳しく</summary>
-            <div class="p-more__body">
-              <img src="assets/img/menu-02-hamukatsu.jpg" width="800" height="800"
-                   alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
-              <p class="p-menu__desc" data-i18n="menu.hamukatsu.desc">厚みで殴ってくるタイプのハムカツ。</p>
-            </div>
-          </details>
         </article>
 
-        <article class="p-menu__row">
-          <div class="p-menu__head">
-            <h4 class="p-menu__name" data-i18n="menu.otsukuri.name">鮮魚お造り盛り合わせ（7点）</h4>
-            <span class="p-menu__price" data-i18n="menu.otsukuri.price">1,628円</span>
+        <article class="p-menu__card">
+          <img src="assets/img/menu-03-otsukuri.jpg" width="800" height="800"
+               alt="鮮魚お造り盛り合わせ（7点）" loading="lazy" decoding="async">
+          <div class="p-menu__card-body">
+            <h4 class="p-menu__card-name"><span data-i18n="menu.otsukuri.name">鮮魚お造り盛り合わせ（7点）</span><span class="p-menu__price" data-i18n="menu.otsukuri.price">1,628円</span></h4>
+            <p class="p-menu__card-desc" data-i18n="menu.otsukuri.desc">「この値段で？」と言われる一皿。</p>
           </div>
-          <details class="p-more">
-            <summary data-i18n="more.detail">詳しく</summary>
-            <div class="p-more__body">
-              <img src="assets/img/menu-03-otsukuri.jpg" width="800" height="800"
-                   alt="鮮魚お造り盛り合わせ（7点）" loading="lazy" decoding="async">
-              <p class="p-menu__desc" data-i18n="menu.otsukuri.desc">「この値段で？」と言われる一皿。</p>
-            </div>
-          </details>
         </article>
       </div>
 
       <h3 class="p-menu__subhead" data-i18n="menu.other.heading">その他のおしながき</h3>
       <!-- TBD: 掲載する品目と現在価格をクライアント確認のうえ確定させる。
                 事実の創作を避けるため、確認できていない品は価格を【TBD】のまま残している。 -->
-      <div class="p-menu__rows">
-        <div class="p-menu__row"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="menu.other.1">黒酢豚 with マッシュポテト</span>
-          <span class="p-menu__price">【TBD】</span>
-        </div></div>
-        <div class="p-menu__row"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="menu.other.2">酒盗ポテトサラダ</span>
-          <span class="p-menu__price">【TBD】</span>
-        </div></div>
-        <div class="p-menu__row"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="menu.other.3">生ふバター</span>
-          <span class="p-menu__price">【TBD】</span>
-        </div></div>
-        <div class="p-menu__row"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="menu.other.4">ろばた焼き各種</span>
-          <span class="p-menu__price">【TBD】</span>
-        </div></div>
-      </div>
+      <ul class="p-menu__list">
+        <li><b data-i18n="menu.other.1">黒酢豚 with マッシュポテト</b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.2">酒盗ポテトサラダ</b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.3">生ふバター</b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.4">ろばた焼き各種<em>※品目・価格はクライアント確認後に記載</em></b><span class="p-menu__price">【TBD】</span></li>
+      </ul>
 
       <h3 class="p-menu__subhead" data-i18n="menu.drink.heading">ドリンク</h3>
-      <div class="p-menu__rows">
-        <div class="p-menu__row p-menu__row--hero"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="drink.bottle.name">瓶ビール（大瓶）</span>
-          <span class="p-menu__price" data-i18n="drink.bottle.price">320円<small>12:00-17:00 ／ 通常 530円</small></span>
-        </div></div>
-        <div class="p-menu__row"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="drink.sake.name">地酒</span>
-          <span class="p-menu__price" data-i18n="drink.sake.price">528円〜</span>
-        </div></div>
-        <div class="p-menu__row"><div class="p-menu__head">
-          <span class="p-menu__name" data-i18n="drink.other.name">生ビール・ハイボール・チューハイ・焼酎・ワイン</span>
-          <span class="p-menu__price" data-i18n="drink.other.price">全35種類</span>
-        </div></div>
+      <div class="p-drink-hero">
+        <span class="p-drink-hero__name" data-i18n="drink.bottle.name">瓶ビール（大瓶）</span>
+        <span class="p-drink-hero__price" data-i18n="drink.bottle.price">320円<small>12:00-17:00 ／ 通常 530円</small></span>
       </div>
+      <ul class="p-menu__list">
+        <li><b data-i18n="drink.sake.name">地酒</b><span class="p-menu__price" data-i18n="drink.sake.price">528円〜</span></li>
+        <li><b data-i18n="drink.other.name">生ビール・ハイボール・チューハイ・焼酎・ワイン</b><span class="p-menu__price" data-i18n="drink.other.price">全35種類</span></li>
+      </ul>
 
       <p class="c-note" style="margin-top:24px" data-i18n="menu.note">
         <!-- TBD: 税込／税別表記を要確認 -->
