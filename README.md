@@ -16,7 +16,7 @@ oodanna-lp/
 │   │   ├── main.js             ← ヘッダー / アニメ / 追従バー / 地図 / GA4
 │   │   ├── happy-hour.js       ← ハッピーアワー残り時間カウンター
 │   │   └── instagram.js        ← Instagram埋め込みの遅延読込
-│   ├── img/*.svg               ← プレースホルダー画像（差し替え対象）
+│   ├── img/*.jpg               ← 本番写真（提供素材から選定・リサイズ済み）
 │   └── video/                  ← FV動画を置く場所（README.txt 参照）
 ├── robots.txt
 ├── sitemap.xml
@@ -104,9 +104,9 @@ Instagram公式の埋め込み（本LPの `#sns` セクション）で表示す�
 ブラウザのコンソールで時刻を注入して4つの時間帯を確認できます。
 
 ```js
-OodannaHappyHour.setDebugTime('12:00');  // → 「大瓶330円 あと5時間」
-OodannaHappyHour.setDebugTime('16:58');  // → 「大瓶330円 あと2分」
-OodannaHappyHour.setDebugTime('17:00');  // → 「本日の330円は終了。明日12:00から」
+OodannaHappyHour.setDebugTime('12:00');  // → 「大瓶320円 あと5時間」
+OodannaHappyHour.setDebugTime('16:58');  // → 「大瓶320円 あと2分」
+OodannaHappyHour.setDebugTime('17:00');  // → 「本日の320円は終了。明日12:00から」
 OodannaHappyHour.setDebugTime('22:10');  // → 追従バー「まもなくL.O.」
 OodannaHappyHour.setDebugTime('03:00');  // → 「本日12:00オープン」
 OodannaHappyHour.clearDebugTime();       // 実時刻に戻す
@@ -115,7 +115,7 @@ console.table(OodannaHappyHour.selfTest()); // 全時間帯の判定を一覧表
 ```
 
 判定は閲覧者の端末タイムゾーンによらず **Asia/Tokyo 基準**です（`Intl.DateTimeFormat` 使用）。
-JSが無効・例外時は HTML に書かれた静的文言「12:00〜17:00は大瓶330円」が残ります。
+JSが無効・例外時は HTML に書かれた静的文言「12:00〜17:00は大瓶320円」が残ります。
 
 ---
 

@@ -1,6 +1,6 @@
 /* ==========================================================================
    happy-hour.js
-   ハッピーアワー（12:00-17:00 / 大瓶330円）残り時間カウンター
+   ハッピーアワー（12:00-17:00 / 大瓶320円）残り時間カウンター
    要件定義書 v1.0 5章-01・追従CTAバー準拠
 
    - 判定は必ず Asia/Tokyo 基準（閲覧者の端末TZに依存しない）
@@ -72,23 +72,23 @@
         state: 'happy',
         minutes: now,
         remaining: remain,
-        fvLabel: '大瓶330円 あと ',
+        fvLabel: '大瓶320円 あと ',
         fvTime: formatRemain(remain),
-        stickyMain: '330円タイム あと' + formatRemain(remain),
-        stickySub: '大瓶ビール 通常530円 → 330円'
+        stickyMain: '320円タイム あと' + formatRemain(remain),
+        stickySub: '大瓶ビール 通常530円 → 320円'
       };
     }
 
-    // 17:00 - 22:00 … 営業中（330円は終了）
+    // 17:00 - 22:00 … 営業中（320円は終了）
     if (now >= HAPPY_END && now < LO_MIN) {
       return {
         state: 'closed',
         minutes: now,
         remaining: 0,
-        fvLabel: '本日の330円は終了。明日12:00から',
+        fvLabel: '本日の320円は終了。明日12:00から',
         fvTime: '',
         stickyMain: '営業中 〜23:00',
-        stickySub: '大瓶330円は明日12:00から'
+        stickySub: '大瓶320円は明日12:00から'
       };
     }
 
@@ -98,7 +98,7 @@
         state: 'lastorder',
         minutes: now,
         remaining: 0,
-        fvLabel: '本日の330円は終了。明日12:00から',
+        fvLabel: '本日の320円は終了。明日12:00から',
         fvTime: '',
         stickyMain: 'まもなくL.O.',
         stickySub: '料理22:00 / ドリンク22:30'
@@ -113,7 +113,7 @@
       fvLabel: '本日12:00オープン',
       fvTime: '',
       stickyMain: '本日12:00オープン',
-      stickySub: '大瓶ビールは12:00-17:00が330円'
+      stickySub: '大瓶ビールは12:00-17:00が320円'
     };
   }
 
