@@ -63,11 +63,18 @@
     onScrollHeader();
   }
 
+  /** ハンバーガーのラベルは表示言語に合わせる */
+  function burgerLabel(open) {
+    var en = document.documentElement.getAttribute('lang') === 'en';
+    if (en) return open ? 'Close the menu' : 'Open the menu';
+    return open ? 'メニューを閉じる' : 'メニューを開く';
+  }
+
   function closeDrawer() {
     if (!drawer || !burger) return;
     drawer.classList.remove('is-open');
     burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'メニューを開く');
+    burger.setAttribute('aria-label', burgerLabel(false));
     document.body.style.overflow = '';
   }
 
@@ -79,7 +86,7 @@
       } else {
         drawer.classList.add('is-open');
         burger.setAttribute('aria-expanded', 'true');
-        burger.setAttribute('aria-label', 'メニューを閉じる');
+        burger.setAttribute('aria-label', burgerLabel(true));
         document.body.style.overflow = 'hidden';
       }
     });
@@ -189,8 +196,9 @@
       fvVideo.load();
     } else {
       var playAttempt = fvVideo.play();
-      if (playAttempt && typeof playAttempt.catch === 'function') {
-        playAttempt.catch(function () { /* 自動再生ブロック時は poster を表示 */ });
+      // catch は予約語のためブラケット記法で呼ぶ（古いパーサ対策）
+      if (playAttempt && typeof playAttempt['catch'] === 'function') {
+        playAttempt['catch'](function () { /* 自動再生ブロック時は poster を表示 */ });
       }
     }
   }
@@ -219,26 +227,19 @@
   /* ------------------------------------------------------------------
      8. 計測イベント（要件書 7.6）
      ------------------------------------------------------------------ */
-  // 8-1. click_reserve（location付き）
-  document.querySelectorAll('[data-cta]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      track('click_reserve', { location: el.getAttribute('data-cta') });
-    });
-  });
+  // 8-1〜8-4. クリック計測はイベント委譲で拾う。
+  // 言語切替で innerHTML を差し替えてもリスナーが外れないようにするため、
+  // 個別要素ではなく document で受ける。
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
 
-  // 8-2. click_instagram
-  document.querySelectorAll('[data-instagram]').forEach(function (el) {
-    el.addEventListener('click', function () { track('click_instagram', {}); });
-  });
+    var cta = t.closest('[data-cta]');
+    if (cta) track('click_reserve', { location: cta.getAttribute('data-cta') });
 
-  // 8-3. click_map（マップアプリへのリンク）
-  document.querySelectorAll('[data-map-link]').forEach(function (el) {
-    el.addEventListener('click', function () { track('click_map', { method: 'link' }); });
-  });
-
-  // 8-4. click_tel
-  document.querySelectorAll('[data-tel]').forEach(function (el) {
-    el.addEventListener('click', function () { track('click_tel', {}); });
+    if (t.closest('[data-instagram]')) track('click_instagram', {});
+    if (t.closest('[data-map-link]')) track('click_map', { method: 'link' });
+    if (t.closest('[data-tel]')) track('click_tel', {});
   });
 
   // 8-5. scroll_depth（25 / 50 / 75 / 100）

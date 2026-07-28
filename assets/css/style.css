@@ -276,13 +276,26 @@ table { border-collapse: collapse; width: 100%; }
 }
 .p-drawer .c-btn { margin-top: var(--s-3); }
 
-/* 言語切替（第2弾用・現在は hidden 属性で非表示 / 要件書 7.5） */
-.p-lang { display: flex; gap: 4px; }
-.p-lang button {
-  font-family: var(--f-en); font-size: 12px; letter-spacing: 0.14em;
-  padding: 6px 10px; border: 1px solid var(--c-line); border-radius: 3px;
+/* 言語切替（要件書 7.5） */
+.p-lang {
+  display: flex; gap: 0;
+  border: 1px solid var(--c-line); border-radius: 4px; overflow: hidden;
 }
-.p-lang button[aria-current="true"] { border-color: var(--c-accent-2); color: var(--c-accent-2); }
+.p-lang button {
+  font-family: var(--f-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 7px 9px; color: var(--c-text-mute);
+  transition: background-color 250ms, color 250ms;
+  min-width: 34px;
+}
+.p-lang button + button { border-left: 1px solid var(--c-line); }
+.p-lang button:hover { color: var(--c-text); }
+.p-lang button[aria-current="true"] {
+  background: var(--c-accent-2); color: #17110A;
+}
+
+@media (min-width: 1024px) {
+  .p-lang button { font-size: 12px; padding: 8px 12px; }
+}
 
 /* --------------------------------------------------------------------------
    6. ファーストビュー
@@ -764,6 +777,32 @@ table { border-collapse: collapse; width: 100%; }
 .js-reveal.is-inview { opacity: 1; transform: none; }
 /* JS無効時に隠れたままにならないようにする（no-jsクラスはHTML側で初期付与→JSで除去） */
 .no-js .js-reveal { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   18-2. 英語表示時の調整（要件書 7.5）
+   日本語向けの詰め・改行制御が英語で崩れないようにする
+   -------------------------------------------------------------------------- */
+:root[lang="en"] body { letter-spacing: 0; line-height: 1.75; }
+:root[lang="en"] .c-heading,
+:root[lang="en"] .p-fv__headline,
+:root[lang="en"] .p-feature__title,
+:root[lang="en"] .p-flow__title,
+:root[lang="en"] .p-menu__card-name,
+:root[lang="en"] .p-drink-hero__name {
+  word-break: normal;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+:root[lang="en"] .c-heading { line-height: 1.25; }
+:root[lang="en"] .p-fv__sub,
+:root[lang="en"] .p-concept__body,
+:root[lang="en"] .p-feature__body,
+:root[lang="en"] .p-flow__desc,
+:root[lang="en"] .p-faq__answer { line-height: 1.75; }
+:root[lang="en"] .p-access__table th { width: 9.5em; letter-spacing: 0.04em; }
+:root[lang="en"] .p-fv__eyebrow { letter-spacing: 0.24em; }
+:root[lang="en"] .p-price__now { letter-spacing: -0.02em; }
+:root[lang="en"] .p-price__now span { letter-spacing: 0; }
 
 /* --------------------------------------------------------------------------
    19. レスポンシブ（要件書 6.5）

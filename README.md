@@ -14,6 +14,7 @@ oodanna-lp/
 │   ├── css/style.css           ← デザイントークン + 全スタイル
 │   ├── js/
 │   │   ├── main.js             ← ヘッダー / アニメ / 追従バー / 地図 / GA4
+│   │   ├── i18n.js             ← 日本語⇔英語の切り替え（英語辞書もここ）
 │   │   ├── happy-hour.js       ← ハッピーアワー残り時間カウンター
 │   │   └── instagram.js        ← Instagram埋め込みの遅延読込
 │   ├── img/*.jpg               ← 本番写真（提供素材から選定・リサイズ済み）
@@ -116,6 +117,41 @@ console.table(OodannaHappyHour.selfTest()); // 全時間帯の判定を一覧表
 
 判定は閲覧者の端末タイムゾーンによらず **Asia/Tokyo 基準**です（`Intl.DateTimeFormat` 使用）。
 JSが無効・例外時は HTML に書かれた静的文言「12:00〜17:00は大瓶320円」が残ります。
+
+---
+
+## 4-2. 英語版（JA / EN 切り替え）
+
+ヘッダー右の **JA / EN ボタン**で、ページ全体が切り替わります。
+
+**仕組み** — 日本語は `index.html` に直書き、英語だけ `assets/js/i18n.js` の `EN` 辞書で差し替えます。
+対象は `data-i18n="キー"` が付いた要素（現在138キー）。初回に日本語のHTMLを退避しておき、
+JAに戻すときはそれを復元します。
+
+**表示言語の決まり方**（上から優先）
+
+1. URLの `?lang=ja` / `?lang=en`
+2. `localStorage` に保存された前回の選択
+3. ブラウザの言語設定（日本語以外なら自動で英語）
+
+英語で共有したいときは `https://kkonds0502-hue.github.io/oodanna-lp/?lang=en` を使ってください。
+`hreflang` も設定済みです。
+
+**文言を直すとき** — `assets/js/i18n.js` の `EN` を編集するだけです（HTMLは触らない）。
+日本語側を直したときは `index.html` を編集し、必要なら同じキーの英語も直します。
+
+```js
+OodannaI18n.set('en');   // 英語に切替
+OodannaI18n.set('ja');   // 日本語に戻す
+OodannaI18n.missing();   // 英語訳が抜けているキーの一覧（空配列なら網羅済み）
+```
+
+ハッピーアワーの残り時間カウンターも英語対応済みです
+（例: `2 hr 14 min left at 320 yen` / `Today's 320 yen is over. Back at 12:00 tomorrow.`）。
+
+> **未対応**: 構造化データ（JSON-LD）とOGPは日本語のままです。canonicalが日本語版を指すため
+> 実害は小さいですが、英語での検索流入を本格的に狙うなら英語専用ページ（`/en/index.html`）に
+> 分ける構成が有利です。
 
 ---
 

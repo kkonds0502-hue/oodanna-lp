@@ -11,6 +11,11 @@
 <!-- 公開URL: GitHub Pages。独自ドメイン取得後は canonical / og:url / og:image / JSON-LD / robots.txt / sitemap.xml を差し替えること -->
 <link rel="canonical" href="https://kkonds0502-hue.github.io/oodanna-lp/">
 
+<!-- 言語別URL。?lang=en を付けると英語で開く（共有・SNS投稿用） -->
+<link rel="alternate" hreflang="ja" href="https://kkonds0502-hue.github.io/oodanna-lp/">
+<link rel="alternate" hreflang="en" href="https://kkonds0502-hue.github.io/oodanna-lp/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://kkonds0502-hue.github.io/oodanna-lp/">
+
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -145,8 +150,8 @@ window.addEventListener('load', function () {
     </nav>
 
     <div class="p-header__actions">
-      <!-- 言語切替: 第2弾（英語版）用のマークアップを先行実装。現在は hidden（要件書 7.5） -->
-      <div class="p-lang" hidden>
+      <!-- 言語切替（要件書 7.5）。文言は assets/js/i18n.js の EN 辞書を data-i18n キーで差し替える -->
+      <div class="p-lang" role="group" aria-label="Language / 言語">
         <button type="button" lang="ja" aria-current="true" data-lang="ja">JA</button>
         <button type="button" lang="en" data-lang="en">EN</button>
       </div>
@@ -163,17 +168,17 @@ window.addEventListener('load', function () {
   </div>
 
   <div class="p-drawer" id="drawer">
-    <a class="p-drawer__link" href="#concept"><span>CONCEPT</span>コンセプト</a>
-    <a class="p-drawer__link" href="#feature"><span>FEATURE</span>3本柱</a>
-    <a class="p-drawer__link" href="#flow"><span>HOW TO ENJOY</span>来店の流れ</a>
-    <a class="p-drawer__link" href="#menu"><span>MENU</span>おしながき</a>
-    <a class="p-drawer__link" href="#voice"><span>VOICE</span>お客様の声</a>
-    <a class="p-drawer__link" href="#access"><span>ACCESS</span>店舗情報・アクセス</a>
-    <a class="p-drawer__link" href="#faq"><span>FAQ</span>よくあるご質問</a>
+    <a class="p-drawer__link" href="#concept" data-i18n="drawer.concept"><span>CONCEPT</span>コンセプト</a>
+    <a class="p-drawer__link" href="#feature" data-i18n="drawer.feature"><span>FEATURE</span>3本柱</a>
+    <a class="p-drawer__link" href="#flow" data-i18n="drawer.flow"><span>HOW TO ENJOY</span>来店の流れ</a>
+    <a class="p-drawer__link" href="#menu" data-i18n="drawer.menu"><span>MENU</span>おしながき</a>
+    <a class="p-drawer__link" href="#voice" data-i18n="drawer.voice"><span>VOICE</span>お客様の声</a>
+    <a class="p-drawer__link" href="#access" data-i18n="drawer.access"><span>ACCESS</span>店舗情報・アクセス</a>
+    <a class="p-drawer__link" href="#faq" data-i18n="drawer.faq"><span>FAQ</span>よくあるご質問</a>
     <a class="c-btn c-btn--block"
        href="https://tabelog.com/osaka/A2701/A270103/27100672/"
        target="_blank" rel="noopener noreferrer"
-       data-cta="drawer">席を確保する（食べログ）</a>
+       data-cta="drawer" data-i18n="cta.drawer">席を確保する（食べログ）</a>
   </div>
 </header>
 
@@ -222,18 +227,18 @@ window.addEventListener('load', function () {
         </a>
       </div>
 
-      <ul class="p-fv__micro" data-i18n="fv.micro">
+      <ul class="p-fv__micro">
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-          JR天満駅から徒歩すぐ
+          <span data-i18n="fv.micro.access">JR天満駅から徒歩すぐ</span>
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>
-          現金のみ
+          <span data-i18n="fv.micro.cash">現金のみ</span>
         </li>
         <li>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
-          全席禁煙
+          <span data-i18n="fv.micro.smoke">全席禁煙</span>
         </li>
       </ul>
     </div>
@@ -314,11 +319,11 @@ window.addEventListener('load', function () {
                     変更する場合は下の「通常 530円」「210円高くなります」（=530-320）と
                     #menu のドリンク欄、happy-hour.js の stickySub をあわせて直すこと。 -->
           <div class="p-price">
-            <p class="p-price__label">瓶ビール（大瓶）</p>
+            <p class="p-price__label" data-i18n="price.label">瓶ビール（大瓶）</p>
             <p class="p-price__row">
-              <span class="p-price__was">通常 530円</span>
+              <span class="p-price__was" data-i18n="price.was">通常 530円</span>
               <span class="p-price__arrow" aria-hidden="true">→</span>
-              <span class="p-price__now">320<span style="font-size:.4em">円</span></span>
+              <span class="p-price__now">320<span style="font-size:.4em" data-i18n="price.unit">円</span></span>
             </p>
             <p><span class="p-price__when">12:00 - 17:00</span></p>
             <p class="p-price__loss" data-i18n="feature.beer.loss">
@@ -500,8 +505,8 @@ window.addEventListener('load', function () {
           <img src="assets/img/menu-01-nikudofu.jpg" width="800" height="800"
                alt="肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
           <div class="p-menu__card-body">
-            <h4 class="p-menu__card-name">肉豆腐（黒ドーフ）<span class="p-menu__price">693円</span></h4>
-            <p class="p-menu__card-desc">真っ黒になるまで煮含めた、看板料理。</p>
+            <h4 class="p-menu__card-name"><span data-i18n="menu.nikudofu.name">肉豆腐（黒ドーフ）</span><span class="p-menu__price" data-i18n="menu.nikudofu.price">693円</span></h4>
+            <p class="p-menu__card-desc" data-i18n="menu.nikudofu.desc">真っ黒になるまで煮含めた、看板料理。</p>
           </div>
         </article>
 
@@ -510,8 +515,8 @@ window.addEventListener('load', function () {
                alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
           <div class="p-menu__card-body">
             <!-- TBD: 雲仙厚切りハムカツの価格を要確認（現状は食べログ掲載値の推定） -->
-            <h4 class="p-menu__card-name">雲仙厚切りハムカツ<span class="p-menu__price">550円 【TBD】</span></h4>
-            <p class="p-menu__card-desc">厚みで殴ってくるタイプのハムカツ。</p>
+            <h4 class="p-menu__card-name"><span data-i18n="menu.hamukatsu.name">雲仙厚切りハムカツ</span><span class="p-menu__price" data-i18n="menu.hamukatsu.price">550円 【TBD】</span></h4>
+            <p class="p-menu__card-desc" data-i18n="menu.hamukatsu.desc">厚みで殴ってくるタイプのハムカツ。</p>
           </div>
         </article>
 
@@ -519,8 +524,8 @@ window.addEventListener('load', function () {
           <img src="assets/img/menu-03-otsukuri.jpg" width="800" height="800"
                alt="鮮魚お造り盛り合わせ（7点）" loading="lazy" decoding="async">
           <div class="p-menu__card-body">
-            <h4 class="p-menu__card-name">鮮魚お造り盛り合わせ（7点）<span class="p-menu__price">1,628円</span></h4>
-            <p class="p-menu__card-desc">「この値段で？」と言われる一皿。</p>
+            <h4 class="p-menu__card-name"><span data-i18n="menu.otsukuri.name">鮮魚お造り盛り合わせ（7点）</span><span class="p-menu__price" data-i18n="menu.otsukuri.price">1,628円</span></h4>
+            <p class="p-menu__card-desc" data-i18n="menu.otsukuri.desc">「この値段で？」と言われる一皿。</p>
           </div>
         </article>
       </div>
@@ -529,23 +534,23 @@ window.addEventListener('load', function () {
       <!-- TBD: 掲載する品目と現在価格をクライアント確認のうえ確定させる。
                 事実の創作を避けるため、確認できていない品は価格を【TBD】のまま残している。 -->
       <ul class="p-menu__list">
-        <li><b>黒酢豚 with マッシュポテト</b><span class="p-menu__price">【TBD】</span></li>
-        <li><b>酒盗ポテトサラダ</b><span class="p-menu__price">【TBD】</span></li>
-        <li><b>生ふバター</b><span class="p-menu__price">【TBD】</span></li>
-        <li><b>ろばた焼き各種<em>※品目・価格はクライアント確認後に記載</em></b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.1">黒酢豚 with マッシュポテト</b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.2">酒盗ポテトサラダ</b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.3">生ふバター</b><span class="p-menu__price">【TBD】</span></li>
+        <li><b data-i18n="menu.other.4">ろばた焼き各種<em>※品目・価格はクライアント確認後に記載</em></b><span class="p-menu__price">【TBD】</span></li>
       </ul>
 
       <h3 class="p-menu__subhead" data-i18n="menu.drink.heading">ドリンク</h3>
       <div class="p-drink-hero">
-        <span class="p-drink-hero__name">瓶ビール（大瓶）</span>
-        <span class="p-drink-hero__price">320円<small>12:00-17:00 ／ 通常 530円</small></span>
+        <span class="p-drink-hero__name" data-i18n="drink.bottle.name">瓶ビール（大瓶）</span>
+        <span class="p-drink-hero__price" data-i18n="drink.bottle.price">320円<small>12:00-17:00 ／ 通常 530円</small></span>
       </div>
       <ul class="p-menu__list">
-        <li><b>地酒</b><span class="p-menu__price">528円〜</span></li>
-        <li><b>生ビール・ハイボール・チューハイ・焼酎・ワイン</b><span class="p-menu__price">全35種類</span></li>
+        <li><b data-i18n="drink.sake.name">地酒</b><span class="p-menu__price" data-i18n="drink.sake.price">528円〜</span></li>
+        <li><b data-i18n="drink.other.name">生ビール・ハイボール・チューハイ・焼酎・ワイン</b><span class="p-menu__price" data-i18n="drink.other.price">全35種類</span></li>
       </ul>
 
-      <p class="c-note" style="margin-top:24px">
+      <p class="c-note" style="margin-top:24px" data-i18n="menu.note">
         <!-- TBD: 税込／税別表記を要確認 -->
         ※表示価格は税込です。【TBD: 税込／税別を要確認】<br>
         ※メニューは仕入れにより変更になる場合があります。<br>
@@ -578,32 +583,32 @@ window.addEventListener('load', function () {
            TBD: 公開前に食べログ最新値へ更新し、下部の取得日注記も合わせて更新すること。 -->
       <div class="p-proof__grid" data-proof-source="tabelog">
         <div class="p-proof__cell">
-          <p class="p-proof__num" data-count="27567" data-suffix="人">27,567<span>人</span></p>
-          <p class="p-proof__label">が食べログで保存</p>
+          <p class="p-proof__num" data-count="27567" data-suffix="人" data-i18n-suffix="saves">27,567<span data-i18n="proof.unit.people">人</span></p>
+          <p class="p-proof__label" data-i18n="proof.label.saves">が食べログで保存</p>
         </div>
         <div class="p-proof__cell">
-          <p class="p-proof__num" data-count="580" data-suffix="件">580<span>件</span></p>
-          <p class="p-proof__label">の口コミ</p>
+          <p class="p-proof__num" data-count="580" data-suffix="件" data-i18n-suffix="">580<span data-i18n="proof.unit.reviews">件</span></p>
+          <p class="p-proof__label" data-i18n="proof.label.reviews">の口コミ</p>
         </div>
         <div class="p-proof__cell">
-          <p class="p-proof__num" data-count="3.49" data-decimals="2" data-suffix="点">3.49<span>点</span></p>
-          <p class="p-proof__label">食べログ評価</p>
+          <p class="p-proof__num" data-count="3.49" data-decimals="2" data-suffix="点" data-i18n-suffix="">3.49<span data-i18n="proof.unit.rating">点</span></p>
+          <p class="p-proof__label" data-i18n="proof.label.rating">食べログ評価</p>
         </div>
         <div class="p-proof__cell">
-          <p class="p-proof__num" data-count="50" data-suffix="席">50<span>席</span></p>
-          <p class="p-proof__label">カウンター20 / テーブル30</p>
+          <p class="p-proof__num" data-count="50" data-suffix="席" data-i18n-suffix="">50<span data-i18n="proof.unit.seats">席</span></p>
+          <p class="p-proof__label" data-i18n="proof.label.seats">カウンター20 / テーブル30</p>
         </div>
         <div class="p-proof__cell">
-          <p class="p-proof__num" data-count="190" data-prefix="" data-suffix="円〜">190<span>円〜</span></p>
-          <p class="p-proof__label">料理の中心価格帯</p>
+          <p class="p-proof__num" data-count="190" data-suffix="円〜" data-i18n-suffix=" yen+">190<span data-i18n="proof.unit.price">円〜</span></p>
+          <p class="p-proof__label" data-i18n="proof.label.price">料理の中心価格帯</p>
         </div>
         <div class="p-proof__cell">
           <p class="p-proof__num">12:00</p>
-          <p class="p-proof__label">から呑めます</p>
+          <p class="p-proof__label" data-i18n="proof.label.open">から呑めます</p>
         </div>
       </div>
 
-      <p class="c-note" style="margin-top:16px">
+      <p class="c-note" style="margin-top:16px" data-i18n="proof.note">
         <!-- TBD: 実装時点の最新値に更新し、取得年月を明記すること -->
         ※食べログ 2026年◯月時点の掲載値です。【TBD: 公開時の最新値に更新】
       </p>
@@ -634,7 +639,7 @@ window.addEventListener('load', function () {
         </figure>
       </div>
       -->
-      <div class="p-voice__placeholder">
+      <div class="p-voice__placeholder" data-i18n="voice.placeholder">
         【TBD: 口コミ引用】実際の食べログ口コミを3〜5件掲載予定。<br>
         引用元の明示・無改変・クライアントの掲載可否確認が取れ次第、ここに差し込みます。<br>
         法務リスクをゼロにする場合は、引用を行わず下のボタンのみの構成とします。
@@ -707,30 +712,30 @@ window.addEventListener('load', function () {
         <div>
           <table class="p-access__table">
             <tbody>
-              <tr><th scope="row">店名</th><td>大旦那 天満本店</td></tr>
-              <tr><th scope="row">住所</th><td>大阪府大阪市北区天神橋5-7-3</td></tr>
-              <tr><th scope="row">アクセス</th><td>
+              <tr><th scope="row" data-i18n="access.th.name">店名</th><td data-i18n="access.td.name">大旦那 天満本店</td></tr>
+              <tr><th scope="row" data-i18n="access.th.address">住所</th><td data-i18n="access.td.address">大阪府大阪市北区天神橋5-7-3</td></tr>
+              <tr><th scope="row" data-i18n="access.th.route">アクセス</th><td data-i18n="access.td.route">
                 JR天満駅から徒歩すぐ（162m）<br>
                 Osaka Metro 扇町駅から徒歩5分<br>
                 Osaka Metro 天神橋筋六丁目駅から徒歩5分
               </td></tr>
-              <tr><th scope="row">電話</th><td>
+              <tr><th scope="row" data-i18n="access.th.tel">電話</th><td data-i18n="access.td.tel">
                 <a href="tel:0663573366" data-tel>06-6357-3366</a>
                 <small>※お電話でのご予約は承っておりません</small>
               </td></tr>
               <!-- TBD: 営業時間に情報差異あり（食べログ「12:00〜23:00通し」／ホットペッパー「11:00-14:30, 17:00-23:00」）。
                         店舗確認のうえ確定させること。ここでは要件書3章の確定値を採用。 -->
-              <tr><th scope="row">営業時間</th><td>
+              <tr><th scope="row" data-i18n="access.th.hours">営業時間</th><td data-i18n="access.td.hours">
                 12:00〜23:00<br>
                 <small>（L.O. 料理 22:00 / ドリンク 22:30）</small>
               </td></tr>
-              <tr><th scope="row">定休日</th><td>不定休</td></tr>
-              <tr><th scope="row">席数</th><td>50席（カウンター20 / テーブル30）</td></tr>
-              <tr><th scope="row">個室・貸切</th><td>なし</td></tr>
-              <tr><th scope="row">喫煙</th><td>全席禁煙</td></tr>
-              <tr><th scope="row">お支払い</th><td>現金のみ（カード・電子マネー・QR決済 不可）</td></tr>
-              <tr><th scope="row">駐車場</th><td>なし（近隣にコインパーキングあり）</td></tr>
-              <tr><th scope="row">ご予約</th><td>
+              <tr><th scope="row" data-i18n="access.th.closed">定休日</th><td data-i18n="access.td.closed">不定休</td></tr>
+              <tr><th scope="row" data-i18n="access.th.seats">席数</th><td data-i18n="access.td.seats">50席（カウンター20 / テーブル30）</td></tr>
+              <tr><th scope="row" data-i18n="access.th.rooms">個室・貸切</th><td data-i18n="access.td.rooms">なし</td></tr>
+              <tr><th scope="row" data-i18n="access.th.smoking">喫煙</th><td data-i18n="access.td.smoking">全席禁煙</td></tr>
+              <tr><th scope="row" data-i18n="access.th.payment">お支払い</th><td data-i18n="access.td.payment">現金のみ（カード・電子マネー・QR決済 不可）</td></tr>
+              <tr><th scope="row" data-i18n="access.th.parking">駐車場</th><td data-i18n="access.td.parking">なし（近隣にコインパーキングあり）</td></tr>
+              <tr><th scope="row" data-i18n="access.th.reserve">ご予約</th><td data-i18n="access.td.reserve">
                 食べログのネット予約から承ります<br>
                 <small>（お電話でのご予約は承っておりません）</small>
               </td></tr>
@@ -739,7 +744,7 @@ window.addEventListener('load', function () {
 
           <p class="p-alert">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 10v5M12 17.5v.01"/></svg>
-            <span>
+            <span data-i18n="access.alert">
               <strong>お支払いは現金のみです</strong>
               クレジットカード・電子マネー・QRコード決済はご利用いただけません。近隣にATMがあります。
             </span>
@@ -752,13 +757,13 @@ window.addEventListener('load', function () {
             <button class="p-map__placeholder" type="button" id="map-load"
                     aria-label="Googleマップを読み込む">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-              <span>地図を表示する</span>
-              <small>大阪府大阪市北区天神橋5-7-3<br>（クリックでGoogleマップを読み込みます）</small>
+              <span data-i18n="map.button">地図を表示する</span>
+              <small data-i18n="map.note">大阪府大阪市北区天神橋5-7-3<br>（クリックでGoogleマップを読み込みます）</small>
             </button>
           </div>
           <p class="c-note" style="margin-top:12px">
             <a href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E6%97%A6%E9%82%A3%20%E5%A4%A9%E6%BA%80%E6%9C%AC%E5%BA%97%20%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E5%8C%97%E5%8C%BA%E5%A4%A9%E7%A5%9E%E6%A9%8B5-7-3"
-               target="_blank" rel="noopener noreferrer" data-map-link>Googleマップアプリで開く →</a>
+               target="_blank" rel="noopener noreferrer" data-map-link data-i18n="map.link">Googleマップアプリで開く →</a>
           </p>
         </div>
       </div>
@@ -785,50 +790,50 @@ window.addEventListener('load', function () {
 
       <div class="p-faq__list">
         <details class="p-faq__item">
-          <summary>予約は必要ですか？</summary>
-          <p class="p-faq__answer">予約なしでもご利用いただけます。ただし夕方以降は満席になることが多いため、確実に座りたい場合は食べログのネット予約をおすすめします。</p>
+          <summary data-i18n="faq.q1">予約は必要ですか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a1">予約なしでもご利用いただけます。ただし夕方以降は満席になることが多いため、確実に座りたい場合は食べログのネット予約をおすすめします。</p>
         </details>
 
         <details class="p-faq__item">
-          <summary>一人でも入れますか？</summary>
-          <p class="p-faq__answer">もちろんです。カウンター20席があり、おひとり様のお客様も多くいらっしゃいます。</p>
+          <summary data-i18n="faq.q2">一人でも入れますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a2">もちろんです。カウンター20席があり、おひとり様のお客様も多くいらっしゃいます。</p>
         </details>
 
         <details class="p-faq__item">
-          <summary>クレジットカードは使えますか？</summary>
-          <p class="p-faq__answer">申し訳ありません、お支払いは現金のみとなります。近隣にATMがあります。</p>
+          <summary data-i18n="faq.q3">クレジットカードは使えますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a3">申し訳ありません、お支払いは現金のみとなります。近隣にATMがあります。</p>
         </details>
 
         <details class="p-faq__item">
-          <summary>予算はどのくらいですか？</summary>
-          <p class="p-faq__answer">お一人あたり2,000円〜3,000円ほどが目安です。料理はほとんどが190円〜590円、瓶ビールは17時まで320円です。</p>
+          <summary data-i18n="faq.q4">予算はどのくらいですか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a4">お一人あたり2,000円〜3,000円ほどが目安です。料理はほとんどが190円〜590円、瓶ビールは17時まで320円です。</p>
         </details>
 
         <details class="p-faq__item">
-          <summary>何時から開いていますか？</summary>
-          <p class="p-faq__answer">12時から23時まで通しで営業しています。昼から呑めます。</p>
+          <summary data-i18n="faq.q5">何時から開いていますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a5">12時から23時まで通しで営業しています。昼から呑めます。</p>
         </details>
 
         <details class="p-faq__item">
-          <summary>個室はありますか？</summary>
-          <p class="p-faq__answer">個室・貸切のご用意はありません。全席が開かれたフロアにあります。</p>
+          <summary data-i18n="faq.q6">個室はありますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a6">個室・貸切のご用意はありません。全席が開かれたフロアにあります。</p>
         </details>
 
         <details class="p-faq__item">
-          <summary>タバコは吸えますか？</summary>
-          <p class="p-faq__answer">全席禁煙です。</p>
+          <summary data-i18n="faq.q7">タバコは吸えますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a7">全席禁煙です。</p>
         </details>
 
         <!-- TBD: 大人数対応の上限人数を要確認。確定後に FAQPage 構造化データにも同じ内容を追加すること -->
         <details class="p-faq__item">
-          <summary>何人まで入れますか？</summary>
-          <p class="p-faq__answer">1名様から10名様までご案内できます。【TBD: 大人数対応の上限を要確認】</p>
+          <summary data-i18n="faq.q8">何人まで入れますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a8">1名様から10名様までご案内できます。【TBD: 大人数対応の上限を要確認】</p>
         </details>
 
         <!-- TBD: 英語メニュー・写真付きメニューの有無を要確認。回答確定後に構造化データにも追加 -->
         <details class="p-faq__item">
-          <summary>英語のメニューはありますか？</summary>
-          <p class="p-faq__answer">【TBD: 要確認。写真付きメニューの有無も確認したい】</p>
+          <summary data-i18n="faq.q9">英語のメニューはありますか？</summary>
+          <p class="p-faq__answer" data-i18n="faq.a9">【TBD: 要確認。写真付きメニューの有無も確認したい】</p>
         </details>
       </div>
     </div>
@@ -857,7 +862,7 @@ window.addEventListener('load', function () {
 <footer class="p-footer" id="footer">
   <div class="l-wrap">
     <p class="p-footer__logo">大旦那 天満本店</p>
-    <p class="p-footer__info">
+    <p class="p-footer__info" data-i18n="footer.info">
       大阪府大阪市北区天神橋5-7-3<br>
       <a href="tel:0663573366" data-tel>06-6357-3366</a><br>
       12:00〜23:00／不定休／全席禁煙／現金のみ
@@ -894,7 +899,7 @@ window.addEventListener('load', function () {
 <div class="p-sticky" id="sticky" aria-hidden="true">
   <p class="p-sticky__status" id="sticky-status" data-state="static">
     <strong>12:00 - 23:00</strong>
-    <span class="p-sticky__status-sub">大瓶ビール 17時まで320円</span>
+    <span class="p-sticky__status-sub" data-i18n="sticky.sub">大瓶ビール 17時まで320円</span>
   </p>
   <a class="c-btn"
      href="https://tabelog.com/osaka/A2701/A270103/27100672/"
@@ -902,6 +907,7 @@ window.addEventListener('load', function () {
      data-cta="sticky" data-i18n="cta.sticky">予約する</a>
 </div>
 
+<script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/happy-hour.js" defer></script>
 <script src="assets/js/instagram.js" defer></script>
 <script src="assets/js/main.js" defer></script>

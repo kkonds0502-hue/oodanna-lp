@@ -49,33 +49,77 @@
     }
   }
 
-  /** 分数を「◯時間◯分」表記に */
-  function formatRemain(min) {
+  /** 現在の表示言語（i18n.js が未読込でも動くようフォールバックする） */
+  function lang() {
+    if (global.OodannaI18n && typeof global.OodannaI18n.get === 'function') {
+      return global.OodannaI18n.get();
+    }
+    return (document.documentElement.getAttribute('lang') === 'en') ? 'en' : 'ja';
+  }
+
+  /** 分数を「◯時間◯分」/「2 hr 14 min」表記に */
+  function formatRemain(min, lc) {
     var h = Math.floor(min / 60);
     var m = min % 60;
+    if (lc === 'en') {
+      if (h > 0 && m > 0) return h + ' hr ' + m + ' min';
+      if (h > 0) return h + (h === 1 ? ' hour' : ' hours');
+      return m + ' min';
+    }
     if (h > 0 && m > 0) return h + '時間' + m + '分';
     if (h > 0) return h + '時間';
     return m + '分';
   }
 
+  /* 時間帯ごとの文言。fvLabel は残り時間の直前までのテキスト */
+  var TEXT = {
+    ja: {
+      happyFv:     '大瓶320円 あと ',
+      happySticky: function (t) { return '320円タイム あと' + t; },
+      happySub:    '大瓶ビール 通常530円 → 320円',
+      overFv:      '本日の320円は終了。明日12:00から',
+      openSticky:  '営業中 〜23:00',
+      openSub:     '大瓶320円は明日12:00から',
+      loSticky:    'まもなくL.O.',
+      loSub:       '料理22:00 / ドリンク22:30',
+      beforeFv:    '本日12:00オープン',
+      beforeSub:   '大瓶ビールは12:00-17:00が320円'
+    },
+    en: {
+      happyFv:     '320 yen large bottles — ',
+      happySticky: function (t) { return t + ' left at 320 yen'; },
+      happySub:    'Large bottle beer: 530 yen → 320 yen',
+      overFv:      "Today's 320 yen is over. Back at 12:00 tomorrow.",
+      openSticky:  'Open until 23:00',
+      openSub:     '320 yen returns at 12:00 tomorrow',
+      loSticky:    'Last orders soon',
+      loSub:       'Food 22:00 / drinks 22:30',
+      beforeFv:    'We open at 12:00 today',
+      beforeSub:   'Large bottles are 320 yen from 12:00 to 17:00'
+    }
+  };
+
   /**
    * 現在の状態を返す
-   * state: 'happy' | 'open' | 'lastorder' | 'closed' | 'before'
+   * state: 'happy' | 'lastorder' | 'closed' | 'before'
    */
   function getState(minutesOverride) {
     var now = (typeof minutesOverride === 'number') ? minutesOverride : tokyoMinutes();
     var remain = HAPPY_END - now;
+    var lc = lang();
+    var t = TEXT[lc] || TEXT.ja;
 
     // 12:00 - 17:00 … ハッピーアワー中
     if (now >= OPEN_MIN && now < HAPPY_END) {
+      var pretty = formatRemain(remain, lc);
       return {
         state: 'happy',
         minutes: now,
         remaining: remain,
-        fvLabel: '大瓶320円 あと ',
-        fvTime: formatRemain(remain),
-        stickyMain: '320円タイム あと' + formatRemain(remain),
-        stickySub: '大瓶ビール 通常530円 → 320円'
+        fvLabel: t.happyFv,
+        fvTime: pretty,
+        stickyMain: t.happySticky(pretty),
+        stickySub: t.happySub
       };
     }
 
@@ -85,10 +129,10 @@
         state: 'closed',
         minutes: now,
         remaining: 0,
-        fvLabel: '本日の320円は終了。明日12:00から',
+        fvLabel: t.overFv,
         fvTime: '',
-        stickyMain: '営業中 〜23:00',
-        stickySub: '大瓶320円は明日12:00から'
+        stickyMain: t.openSticky,
+        stickySub: t.openSub
       };
     }
 
@@ -98,10 +142,10 @@
         state: 'lastorder',
         minutes: now,
         remaining: 0,
-        fvLabel: '本日の320円は終了。明日12:00から',
+        fvLabel: t.overFv,
         fvTime: '',
-        stickyMain: 'まもなくL.O.',
-        stickySub: '料理22:00 / ドリンク22:30'
+        stickyMain: t.loSticky,
+        stickySub: t.loSub
       };
     }
 
@@ -110,10 +154,10 @@
       state: 'before',
       minutes: now,
       remaining: 0,
-      fvLabel: '本日12:00オープン',
+      fvLabel: t.beforeFv,
       fvTime: '',
-      stickyMain: '本日12:00オープン',
-      stickySub: '大瓶ビールは12:00-17:00が320円'
+      stickyMain: t.beforeFv,
+      stickySub: t.beforeSub
     };
   }
 
