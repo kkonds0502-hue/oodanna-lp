@@ -188,18 +188,38 @@
   var fvVideo = document.getElementById('fv-video');
   if (fvVideo) {
     var isMobile = window.innerWidth < 768;
-    if (prefersReduced || (DISABLE_VIDEO_ON_MOBILE && isMobile)) {
-      // 動画を読み込まず、poster / 背景画像の静止画で見せる
-      fvVideo.removeAttribute('autoplay');
-      fvVideo.pause();
-      while (fvVideo.firstChild) fvVideo.removeChild(fvVideo.firstChild);
-      fvVideo.load();
+    var skipVideo = prefersReduced || (DISABLE_VIDEO_ON_MOBILE && isMobile);
+
+    if (skipVideo) {
+      // 動画は読み込まず、poster / 背景画像の静止画で見せる
+      fvVideo.removeAttribute('data-src');
     } else {
-      var playAttempt = fvVideo.play();
-      // catch は予約語のためブラケット記法で呼ぶ（古いパーサ対策）
-      if (playAttempt && typeof playAttempt['catch'] === 'function') {
-        playAttempt['catch'](function () { /* 自動再生ブロック時は poster を表示 */ });
-      }
+      // ページ表示が終わってから動画を読み込む。
+      // LCPは poster 画像で確定させ、動画の転送はその後に回す。
+      var startVideo = function () {
+        var src = fvVideo.getAttribute('data-src');
+        if (!src) return;
+        fvVideo.removeAttribute('data-src');
+        var s = document.createElement('source');
+        s.src = src;
+        s.type = 'video/mp4';
+        fvVideo.appendChild(s);
+        fvVideo.preload = 'auto';
+        fvVideo.load();
+        var playAttempt = fvVideo.play();
+        // catch は予約語のためブラケット記法で呼ぶ（古いパーサ対策）
+        if (playAttempt && typeof playAttempt['catch'] === 'function') {
+          playAttempt['catch'](function () { /* 自動再生がブロックされたら poster のまま */ });
+        }
+      };
+
+      var schedule = function () {
+        if (window.requestIdleCallback) window.requestIdleCallback(startVideo, { timeout: 2500 });
+        else setTimeout(startVideo, 600);
+      };
+
+      if (document.readyState === 'complete') schedule();
+      else window.addEventListener('load', schedule);
     }
   }
 

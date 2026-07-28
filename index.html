@@ -191,11 +191,11 @@ window.addEventListener('load', function () {
     <div class="p-fv__media">
       <!-- 素材差し替え: assets/video/hero-dobuzuke.mp4 / .webm（6-10秒・無音・1.5MB以下）を置くだけで再生される。
            動画が未設置の間は poster（hero-poster.jpg）と .p-fv__media の background-image が表示される。 -->
+      <!-- 動画はページ表示完了後に main.js が data-src から差し込む（LCPを poster 画像で確定させるため）。
+           JS無効時・モバイル時は poster と .p-fv__media の背景画像のみが表示される。 -->
       <video id="fv-video" poster="assets/img/hero-poster.jpg"
-             autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src="assets/video/hero-dobuzuke.webm" type="video/webm">
-        <source src="assets/video/hero-dobuzuke.mp4" type="video/mp4">
-      </video>
+             data-src="assets/video/hero-dobuzuke.mp4"
+             muted loop playsinline preload="none" aria-hidden="true"></video>
     </div>
     <div class="p-fv__overlay" aria-hidden="true"></div>
 
