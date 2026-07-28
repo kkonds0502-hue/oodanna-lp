@@ -304,8 +304,8 @@ table { border-collapse: collapse; width: 100%; }
   position: relative;
   min-height: 100svh;
   display: flex;
-  align-items: flex-end;
-  padding-top: 80px;
+  align-items: center;
+  padding-top: clamp(88px, 14vw, 128px);
   padding-bottom: clamp(40px, 9vw, 88px);
   overflow: hidden;
   isolation: isolate;
@@ -321,34 +321,80 @@ table { border-collapse: collapse; width: 100%; }
   width: 100%; height: 100%; object-fit: cover;
 }
 
+/* 写真を見せるため、暗幕は控えめに。文字が乗る下側だけ濃くする */
 .p-fv__overlay {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(to top, rgba(13, 11, 10, 0.96) 0%, rgba(13, 11, 10, 0.72) 34%, rgba(13, 11, 10, 0.28) 66%, rgba(13, 11, 10, 0.5) 100%);
+    /* 左側のテキストの可読性を確保する帯 */
+    linear-gradient(to right, rgba(13, 11, 10, 0.72) 0%, rgba(13, 11, 10, 0.30) 46%, rgba(13, 11, 10, 0) 72%),
+    linear-gradient(to top, rgba(13, 11, 10, 0.88) 0%, rgba(13, 11, 10, 0.55) 26%, rgba(13, 11, 10, 0.16) 56%, rgba(13, 11, 10, 0.42) 100%);
 }
 
-.p-fv__inner { width: min(var(--w-max), 100% - var(--s-4)); margin-inline: auto; }
+.p-fv__inner {
+  width: min(var(--w-max), 100% - var(--s-4));
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(28px, 5vw, 48px);
+  justify-items: center;
+}
+
+/* ---- 縦書きコピーの額（参考: つきじ植むら） ---- */
+.p-fv__panel {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;   /* 右の列から読ませる */
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(12px, 2.2vw, 24px);
+  padding: clamp(26px, 4.4vw, 44px) clamp(22px, 3.4vw, 38px);
+  background-color: rgba(246, 241, 231, 0.955);
+  /* 和紙のような微細な地紋 */
+  background-image: radial-gradient(rgba(122, 100, 66, 0.055) 1px, transparent 1px);
+  background-size: 4px 4px;
+  border: 1px solid #C6A063;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+/* 内側にもう一本、細い罫を回す */
+.p-fv__panel::before {
+  content: "";
+  position: absolute; inset: 5px;
+  border: 1px solid rgba(198, 160, 99, 0.5);
+  pointer-events: none;
+}
+/* 右上の朱のあしらい（参考サイトの紅葉にあたる位置） */
+.p-fv__panel::after {
+  content: "";
+  position: absolute; top: 14px; right: 14px;
+  width: 9px; height: 9px;
+  background: var(--c-accent);
+  transform: rotate(45deg);
+}
 
 .p-fv__eyebrow {
-  font-family: var(--f-sans);
-  font-size: clamp(15px, 2.6vw, 24px);
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  line-height: 1.6;
-  color: var(--c-accent-2);
-  margin-bottom: var(--s-3);
+  writing-mode: vertical-rl;
+  font-family: var(--f-serif);
+  font-size: clamp(13px, 2.1vw, 19px);
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  line-height: 1;
+  color: #7A4E1E;
+  margin: 4px 0 0;
+  align-self: flex-start;
 }
 
 .p-fv__headline {
+  writing-mode: vertical-rl;
   font-family: var(--f-serif);
-  font-size: clamp(40px, 9vw, 88px);
+  font-size: clamp(32px, 8vw, 58px);
   font-weight: 600;
-  line-height: 1.28;
-  letter-spacing: 0.06em;
-  word-break: auto-phrase;
-  margin-bottom: var(--s-3);
-  text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+  line-height: 1.75;              /* 縦書きでは列と列の間隔になる */
+  letter-spacing: 0.14em;
+  color: #241C14;
+  margin: 0;
+  text-shadow: none;
 }
+
+.p-fv__body { width: 100%; }
 
 .p-fv__sub {
   font-size: clamp(15px, 2vw, 18px);
@@ -802,7 +848,21 @@ table { border-collapse: collapse; width: 100%; }
 :root[lang="en"] .p-flow__desc,
 :root[lang="en"] .p-faq__answer { line-height: 1.75; }
 :root[lang="en"] .p-access__table th { width: 9.5em; letter-spacing: 0.04em; }
-:root[lang="en"] .p-fv__eyebrow { letter-spacing: 0.24em; }
+/* 英語表示では縦書きを解除して横書きに戻す */
+:root[lang="en"] .p-fv__panel { flex-direction: column; align-items: flex-start; }
+:root[lang="en"] .p-fv__eyebrow {
+  writing-mode: horizontal-tb;
+  letter-spacing: 0.24em;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+:root[lang="en"] .p-fv__headline {
+  writing-mode: horizontal-tb;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-size: clamp(30px, 5.6vw, 56px);
+  max-width: 12em;
+}
 :root[lang="en"] .p-price__now { letter-spacing: -0.02em; }
 :root[lang="en"] .p-price__now span { letter-spacing: 0; }
 
@@ -818,6 +878,18 @@ table { border-collapse: collapse; width: 100%; }
   .p-notes { grid-template-columns: repeat(3, 1fr); }
   .p-fv__actions { flex-direction: row; align-items: center; flex-wrap: wrap; }
   .p-fv__actions .c-btn { width: auto; }
+}
+
+/* FV: 左にテキスト、右に縦書きの額（参考サイトの構図） */
+@media (min-width: 900px) {
+  .p-fv__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(40px, 6vw, 88px);
+    justify-items: start;
+  }
+  .p-fv__panel { grid-column: 2; grid-row: 1; }
+  .p-fv__body  { grid-column: 1; grid-row: 1; }
 }
 
 @media (min-width: 1024px) {

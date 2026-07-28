@@ -200,17 +200,22 @@ window.addEventListener('load', function () {
     <div class="p-fv__overlay" aria-hidden="true"></div>
 
     <div class="p-fv__inner js-reveal">
-      <p class="p-fv__eyebrow" data-i18n="fv.eyebrow">天満 大衆酒場</p>
 
+      <!-- 縦書きコピーの額（参考: つきじ植むら）。英語表示時は i18n.js が lang を切り替え、
+           CSS 側で自動的に横書きに戻る -->
+      <div class="p-fv__panel">
+        <p class="p-fv__eyebrow" data-i18n="fv.eyebrow">天満 大衆酒場</p>
+        <h1 class="p-fv__headline" data-i18n="fv.headline">
+          氷水から、<br>引き上げる。
+        </h1>
+      </div>
+
+      <div class="p-fv__body">
       <!-- ハッピーアワー残り時間カウンター（happy-hour.js が更新 / JS無効時は下記の静的文言のまま） -->
       <p class="p-hh" id="hh-fv" data-state="static" role="status">
         <span class="p-hh__dot" aria-hidden="true"></span>
         <span class="p-hh__text" data-i18n="fv.happyhour">12:00〜17:00は大瓶320円</span>
       </p>
-
-      <h1 class="p-fv__headline" data-i18n="fv.headline">
-        氷水から、<br>引き上げる。
-      </h1>
 
       <p class="p-fv__sub" data-i18n="fv.sub">
         昼12時から呑める、天満の大衆酒場。<br>
@@ -241,6 +246,7 @@ window.addEventListener('load', function () {
           <span data-i18n="fv.micro.smoke">全席禁煙</span>
         </li>
       </ul>
+      </div><!-- /.p-fv__body -->
     </div>
 
     <p class="p-fv__scroll" aria-hidden="true">SCROLL</p>
