@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 独自ドメイン取得後は差し替えること
+Sitemap: https://kkonds0502-hue.github.io/oodanna-lp/sitemap.xml

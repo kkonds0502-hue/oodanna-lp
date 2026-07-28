@@ -1,0 +1,11 @@
+{
+  "name": "大旦那 天満本店",
+  "short_name": "大旦那",
+  "description": "昼12時から呑める天満の大衆酒場。大瓶ビール17時まで330円。",
+  "lang": "ja",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0D0B0A",
+  "theme_color": "#0D0B0A",
+  "icons": []
+}
