@@ -331,8 +331,10 @@ table { border-collapse: collapse; width: 100%; }
 
 .p-fv__eyebrow {
   font-family: var(--f-sans);
-  font-size: 12px;
-  letter-spacing: 0.4em;
+  font-size: clamp(15px, 2.6vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  line-height: 1.6;
   color: var(--c-accent-2);
   margin-bottom: var(--s-3);
 }
