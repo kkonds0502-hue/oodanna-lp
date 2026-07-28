@@ -38,6 +38,8 @@
     'drawer.voice': '<span>VOICE</span>Reviews',
     'drawer.access': '<span>ACCESS</span>Access',
     'drawer.faq': '<span>FAQ</span>FAQ',
+    'more.photos': 'Photos',
+    'more.detail': 'Details',
 
     /* --- 01 ファーストビュー --- */
     'fv.eyebrow': 'TENMA, OSAKA — IZAKAYA',
@@ -50,7 +52,7 @@
     'fv.micro.smoke': 'Non-smoking',
 
     /* --- 02 コンセプト --- */
-    'concept.heading': 'A night out in Tenma<br>starts here.',
+    'concept.heading': 'A night out<br>in Tenma<br>starts here.',
     'concept.body':
       '<p>Tenma, Osaka. Just off the northern end of<br>' +
       'Japan&rsquo;s longest shopping street, one shop<br>' +
@@ -66,7 +68,10 @@
       'Start your evening with us.</p>',
 
     /* --- 03 3本柱 --- */
-    'feature.beer.title': 'Pull your own<br>out of the ice.',
+    'feature.beer.tags': '— ICE WATER × LARGE BOTTLE × 320 YEN —',
+    'feature.sakana.tags': '— 43 DISHES × MADE IN HOUSE × FROM 190 YEN —',
+    'feature.ba.tags': '— SHOWA × 50 SEATS × NON-SMOKING —',
+    'feature.beer.title': 'Pull your own out of the ice.',
     'feature.beer.body':
       '<p>Nobody brings your beer to the table.<br>' +
       'You reach into the ice water and pull out<br>' +
@@ -81,7 +86,7 @@
     'feature.beer.loss': 'One minute past 5 pm and every bottle costs 210 yen more.',
     'cta.feature': 'Make it before 5 pm',
 
-    'feature.sakana.title': 'From 190 yen,<br>all made in house.',
+    'feature.sakana.title': 'From 190 yen, all made in house.',
     'feature.sakana.body':
       '<p>43 dishes. Almost all of them are 190 to 590 yen.</p>' +
       '<p>Cheap does not mean cut corners.<br>' +
@@ -95,7 +100,7 @@
       'Most people are surprised at least once<br>' +
       'that sashimi at this price looks like this.</p>',
 
-    'feature.ba.title': 'Showa Japan,<br>still standing.',
+    'feature.ba.title': 'Showa Japan, still standing.',
     'feature.ba.body':
       '<p>20 counter seats, 30 table seats. 50 in all.<br>' +
       'No private rooms. No partitions.</p>' +
@@ -136,7 +141,7 @@
     'menu.other.1': 'Black vinegar pork with mashed potato',
     'menu.other.2': 'Potato salad with shuto',
     'menu.other.3': 'Namafu with butter',
-    'menu.other.4': 'Robatayaki skewers<em>Items and prices to be confirmed</em>',
+    'menu.other.4': 'Robatayaki skewers',
     'menu.drink.heading': 'Drinks',
     'drink.bottle.name': 'Large bottle beer',
     'drink.bottle.price': '320 yen<small>12:00-17:00 / regular 530 yen</small>',
