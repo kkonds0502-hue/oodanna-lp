@@ -32,39 +32,45 @@ oodanna-lp/
 
 ### 2-1. 画像
 
-現在はすべて **SVGのプレースホルダー**（グレー背景＋ファイル名）です。
-本番画像は **WebP** で用意し、`assets/img/` に同じファイル名で置いたうえで、
-`index.html` の該当箇所の拡張子 `.svg` → `.webp` を書き換えてください。
+提供素材（`大旦那写真` フォルダ）から選定・リサイズした **JPEG** を配置済みです。
 
-| ファイル名 | 用途 | 推奨サイズ |
-|---|---|---|
-| `hero-poster` | FV動画のポスター（動画1フレーム目） | 1920×1080 |
-| `feature-beer-01` | 氷水に沈む瓶の俯瞰 | 1600×1200 |
-| `feature-beer-02` | グラスに注ぐシズルカット | 800×533 |
-| `feature-beer-03` | 引き上げた瓶（霜） | 800×533 |
-| `feature-sakana-01` | 肉豆腐（黒ドーフ） | 1600×1200 |
-| `feature-sakana-02` | お造り7点盛り | 800×533 |
-| `feature-sakana-03` | ハムカツ | 800×533 |
-| `feature-ba-01` | 店内全景（カウンター・厨房） | 1600×1200 |
-| `feature-ba-02` | 外観（昼・暖簾） | 800×533 |
-| `feature-ba-03` | ろばた焼きの串 | 800×533 |
-| `menu-01-nikudofu` | 肉豆腐（正方形） | 800×800 |
-| `menu-02-hamukatsu` | ハムカツ（正方形） | 800×800 |
-| `menu-03-otsukuri` | お造り（正方形） | 800×800 |
-| `og-image` | OGP用。**JPEGで用意**（`og-image.jpg`） | 1200×630 |
+| ファイル名 | 内容 | 出力サイズ | 元ファイル | 撮影地 |
+|---|---|---|---|---|
+| `hero-poster.jpg` | 氷水の大瓶（FV背景） | 1536×864 | `03_007.jpg` | 商品撮影 |
+| `og-image.jpg` | OGP | 1200×630 | `03_007.jpg` | 商品撮影 |
+| `feature-beer-01.jpg` | 氷水に沈む大瓶 | 1440×1080 | `03_007.jpg` | 商品撮影 |
+| `feature-beer-02.jpg` | 瓶を引き上げるスタッフ | 1200×800 | `241206_..._038.jpg` | **KITTE店** |
+| `feature-beer-03.jpg` | 氷水の大瓶アップ | 1200×800 | `LINE_..._1.jpg` | 商品撮影 |
+| `feature-sakana-01.jpg` | 肉豆腐（黒ドーフ） | 1440×1080 | `0H6A5675.jpg` | 商品撮影 |
+| `feature-sakana-02.jpg` | 鮮魚お造り | 1200×800 | `0H6A5690.jpg` | 商品撮影 |
+| `feature-sakana-03.jpg` | 雲仙厚切りハムカツ | 1200×800 | `03_005.jpg` | 商品撮影 |
+| `feature-ba-01.jpg` | 店内全景 | 1440×1080 | `241206_..._001.jpg` | **KITTE店** |
+| `feature-ba-02.jpg` | 大旦那の看板 | 1200×800 | `LINE_..._74.jpg` | **KITTE店** |
+| `feature-ba-03.jpg` | 赤提灯 | 1200×800 | `241206_..._012.jpg` | **KITTE店** |
+| `menu-01-nikudofu.jpg` | 肉豆腐 | 800×800 | `0H6A5717.jpg` | 商品撮影 |
+| `menu-02-hamukatsu.jpg` | ハムカツ | 800×800 | `03_005.jpg` | 商品撮影 |
+| `menu-03-otsukuri.jpg` | お造り | 800×800 | `0H6A5690.jpg` | 商品撮影 |
 
-WebP変換コマンド例:
+> ⚠️ **KITTE店** と記した5枚は別店舗の写真です。天満本店の店内・外観写真が用意でき次第、
+> 同じファイル名で差し替えてください（HTMLの編集は不要）。要件書1.3・6.1が指摘するとおり、
+> LPと現地体験のギャップは口コミ低評価の主因になります。
+
+### 2-1-2. WebP化（未実施 / 推奨）
+
+この環境に変換ツールが無かったため **JPEG（品質82）** で書き出しています。
+WebP化すると転送量が3〜4割減ります。ツールを入れたら下記を実行し、
+`index.html` の `.jpg` → `.webp` を一括置換してください。
 
 ```bash
-# 単体
-cwebp -q 80 -resize 1600 0 source.jpg -o assets/img/feature-beer-01.webp
+# ImageMagick
+magick mogrify -format webp -quality 80 -path assets/img assets/img/*.jpg
 
-# まとめて（ImageMagick）
-magick mogrify -format webp -quality 80 -path assets/img *.jpg
+# cwebp（単体）
+cwebp -q 80 assets/img/feature-beer-01.jpg -o assets/img/feature-beer-01.webp
 ```
 
-`index.html` の `<img>` には `width` / `height` を明記済みです（CLS対策）。
-**差し替え後、実寸と属性値が食い違う場合は属性値も更新してください。**
+`index.html` の `<img>` には実寸の `width` / `height` を明記済みです（CLS対策）。
+**差し替え後に縦横比が変わる場合は属性値も更新してください。**
 
 ### 2-2. FV動画
 

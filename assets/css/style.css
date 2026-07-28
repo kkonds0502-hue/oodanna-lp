@@ -301,7 +301,7 @@ table { border-collapse: collapse; width: 100%; }
 .p-fv__media {
   position: absolute; inset: 0; z-index: -2;
   background: #0A0807 center / cover no-repeat;
-  background-image: url("../img/hero-poster.svg"); /* 動画・poster未設置時のフォールバック */
+  background-image: url("../img/hero-poster.jpg"); /* 動画未設置時のフォールバック */
 }
 .p-fv__media video,
 .p-fv__media img {

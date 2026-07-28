@@ -184,10 +184,9 @@ window.addEventListener('load', function () {
        ============================================================ -->
   <section class="p-fv" id="fv" aria-label="大旦那 天満本店">
     <div class="p-fv__media">
-      <!-- 素材差し替え: assets/video/hero-dobuzuke.mp4 / .webm（6-10秒・無音・1.5MB以下）
-           poster は assets/img/hero-poster.webp に差し替える。
-           動画・poster が未設置の間は .p-fv__media の background-image が表示される。 -->
-      <video id="fv-video" poster="assets/img/hero-poster.svg"
+      <!-- 素材差し替え: assets/video/hero-dobuzuke.mp4 / .webm（6-10秒・無音・1.5MB以下）を置くだけで再生される。
+           動画が未設置の間は poster（hero-poster.jpg）と .p-fv__media の background-image が表示される。 -->
+      <video id="fv-video" poster="assets/img/hero-poster.jpg"
              autoplay muted loop playsinline preload="metadata" aria-hidden="true">
         <source src="assets/video/hero-dobuzuke.webm" type="video/webm">
         <source src="assets/video/hero-dobuzuke.mp4" type="video/mp4">
@@ -283,13 +282,14 @@ window.addEventListener('load', function () {
       <!-- ---------- 特徴① BEER ---------- -->
       <article class="p-feature__item js-reveal">
         <div class="p-feature__media">
-          <img src="assets/img/feature-beer-01.svg" width="1600" height="1200"
-               alt="氷水に沈んだ大瓶ビールを俯瞰で見た様子" loading="lazy" decoding="async">
+          <img src="assets/img/feature-beer-01.jpg" width="1440" height="1080"
+               alt="氷水に沈められたキリンラガーの大瓶" loading="lazy" decoding="async">
           <div class="p-feature__sub">
-            <img src="assets/img/feature-beer-02.svg" width="800" height="533"
-                 alt="グラスに注がれる大瓶ビールと立ち上がる泡" loading="lazy" decoding="async">
-            <img src="assets/img/feature-beer-03.svg" width="800" height="533"
-                 alt="氷水から引き上げられた瓶に霜がついた様子" loading="lazy" decoding="async">
+            <!-- 撮影地: KITTE店。天満本店の写真が用意でき次第、差し替えること -->
+            <img src="assets/img/feature-beer-02.jpg" width="1200" height="800"
+                 alt="氷水から大瓶ビールを引き上げるスタッフ" loading="lazy" decoding="async">
+            <img src="assets/img/feature-beer-03.jpg" width="1200" height="800"
+                 alt="氷にどっぷり浸かった大瓶ビール" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -337,12 +337,12 @@ window.addEventListener('load', function () {
       <!-- ---------- 特徴② SAKANA ---------- -->
       <article class="p-feature__item js-reveal">
         <div class="p-feature__media">
-          <img src="assets/img/feature-sakana-01.svg" width="1600" height="1200"
+          <img src="assets/img/feature-sakana-01.jpg" width="1440" height="1080"
                alt="看板料理の肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
           <div class="p-feature__sub">
-            <img src="assets/img/feature-sakana-02.svg" width="800" height="533"
-                 alt="鮮魚のお造り7点盛り合わせ" loading="lazy" decoding="async">
-            <img src="assets/img/feature-sakana-03.svg" width="800" height="533"
+            <img src="assets/img/feature-sakana-02.jpg" width="1200" height="800"
+                 alt="鮮魚のお造り盛り合わせ" loading="lazy" decoding="async">
+            <img src="assets/img/feature-sakana-03.jpg" width="1200" height="800"
                  alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
           </div>
         </div>
@@ -374,13 +374,15 @@ window.addEventListener('load', function () {
       <!-- ---------- 特徴③ BA ---------- -->
       <article class="p-feature__item js-reveal">
         <div class="p-feature__media">
-          <img src="assets/img/feature-ba-01.svg" width="1600" height="1200"
-               alt="カウンターと開けっぱなしの厨房が見える店内" loading="lazy" decoding="async">
+          <!-- 撮影地: いずれもKITTE店。天満本店の店内・外観写真が用意でき次第、差し替えること
+               （要件書1.3・6.1が指摘するとおり、LPと現地のギャップは口コミ低評価の主因になる） -->
+          <img src="assets/img/feature-ba-01.jpg" width="1440" height="1080"
+               alt="カウンターと厨房が見えるにぎわう店内" loading="lazy" decoding="async">
           <div class="p-feature__sub">
-            <img src="assets/img/feature-ba-02.svg" width="800" height="533"
-                 alt="昼の暖簾がかかった店舗外観" loading="lazy" decoding="async">
-            <img src="assets/img/feature-ba-03.svg" width="800" height="533"
-                 alt="焼き台に並ぶろばた焼きの串" loading="lazy" decoding="async">
+            <img src="assets/img/feature-ba-02.jpg" width="1200" height="800"
+                 alt="「大衆酒場 大旦那」の看板" loading="lazy" decoding="async">
+            <img src="assets/img/feature-ba-03.jpg" width="1200" height="800"
+                 alt="店頭に下がる大旦那の赤提灯" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -491,7 +493,7 @@ window.addEventListener('load', function () {
       <h3 class="p-menu__subhead" data-i18n="menu.pick.heading">まずはこの3品</h3>
       <div class="p-menu__cards">
         <article class="p-menu__card">
-          <img src="assets/img/menu-01-nikudofu.svg" width="800" height="800"
+          <img src="assets/img/menu-01-nikudofu.jpg" width="800" height="800"
                alt="肉豆腐（黒ドーフ）" loading="lazy" decoding="async">
           <div class="p-menu__card-body">
             <h4 class="p-menu__card-name">肉豆腐（黒ドーフ）<span class="p-menu__price">693円</span></h4>
@@ -500,7 +502,7 @@ window.addEventListener('load', function () {
         </article>
 
         <article class="p-menu__card">
-          <img src="assets/img/menu-02-hamukatsu.svg" width="800" height="800"
+          <img src="assets/img/menu-02-hamukatsu.jpg" width="800" height="800"
                alt="雲仙厚切りハムカツ" loading="lazy" decoding="async">
           <div class="p-menu__card-body">
             <!-- TBD: 雲仙厚切りハムカツの価格を要確認（現状は食べログ掲載値の推定） -->
@@ -510,7 +512,7 @@ window.addEventListener('load', function () {
         </article>
 
         <article class="p-menu__card">
-          <img src="assets/img/menu-03-otsukuri.svg" width="800" height="800"
+          <img src="assets/img/menu-03-otsukuri.jpg" width="800" height="800"
                alt="鮮魚お造り盛り合わせ（7点）" loading="lazy" decoding="async">
           <div class="p-menu__card-body">
             <h4 class="p-menu__card-name">鮮魚お造り盛り合わせ（7点）<span class="p-menu__price">1,628円</span></h4>
