@@ -659,8 +659,16 @@ window.addEventListener('load', function () {
 
       <!-- instagram.js が IntersectionObserver で embed.js を遅延注入する。
            1枠目は要件書指定の「どぶ漬けリール」。 -->
+      <!-- 表示する投稿は data-ig-posts にカンマ区切りで記述（1枠目は要件書指定のどぶ漬けリール）。
+           すべて店舗公式アカウント @oodanna_tenma の投稿を公式埋め込みで表示している。
+           TBD: 各投稿の内容を目視で確認し、告知系のテキスト投稿が混ざっていれば差し替えること。 -->
       <div class="p-sns__embeds" id="ig-embeds"
-           data-ig-posts="https://www.instagram.com/reel/DamlAbluynL/">
+           data-ig-posts="https://www.instagram.com/reel/DamlAbluynL/,
+                          https://www.instagram.com/p/DbSfHDTmdLK/,
+                          https://www.instagram.com/p/DbP6W3GGXOi/,
+                          https://www.instagram.com/p/DbNVf_VGSYx/,
+                          https://www.instagram.com/p/DbKwtQlmUpk/,
+                          https://www.instagram.com/p/DbIL81UGdsi/">
         <noscript>
           <p class="p-sns__fallback">
             投稿の表示にはJavaScriptが必要です。
@@ -668,7 +676,6 @@ window.addEventListener('load', function () {
           </p>
         </noscript>
       </div>
-      <!-- TBD: 表示する追加投稿（計3〜6件）のURLを確定し、data-ig-posts にカンマ区切りで追記すること -->
 
       <div class="c-cta-block">
         <a class="c-btn c-btn--ghost"
